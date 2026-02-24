@@ -1,12 +1,24 @@
-# React + Vite
+# 🔐 Cipher Suite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A full-stack encryption web application that enables secure text encryption and decryption using Caesar, Vigenère, and ASCII ciphers.
 
-Currently, two official plugins are available:
+[Live Demo](https://cipher-suite16.web.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Cipher Suite Preview](Link to a screenshot or GIF of the app)
 
-## Expanding the ESLint configuration
+## ✨ Features
+* **Multiple Ciphers:** Choose between Caesar, Vigenère, and ASCII encryption.
+* **Secure Authentication:** User login and management powered by Firebase Auth.
+* **History Syncing:** User-specific cipher history securely saved and synced using Supabase.
+* **Interactive UI:** Responsive multi-slide layout with modern animations and a dynamic particle background.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Built With
+* **Frontend:** React.js, JavaScript (ES6+), CSS3
+* **Backend/BaaS:** Firebase (Authentication, Hosting), Supabase (Database)
+* **Tooling:** Vite, React Router DOM
+
+## 🚀 How to Run Locally
+1. Clone the repository: `git clone https://github.com/syed-raiyan-ali/Cipher-Suite.git`
+2. Install dependencies: `npm install`
+3. Add your Firebase and Supabase environment variables in a `.env` file.
+4. Start the development server: `npm run dev`
