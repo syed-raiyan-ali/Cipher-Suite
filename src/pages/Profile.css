@@ -1,0 +1,115 @@
+.profile-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow-y: auto; /* allow vertical scroll for long content */
+  /* border: 1px solid var(--accent-color); */
+  /* background-color: #222831; */
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* top align content for better UX */
+  align-items: center;
+  padding: 25px 15px; /* spacing inside container */
+  box-sizing: border-box;
+  color: #eee;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.clear-history-btn, .profile-logout-btn, .navbar-google-login-btn {
+  background: #00adb5;
+  color: #222831;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.clear-history-btn:hover, .profile-logout-btn:hover, .navbar-google-login-btn:hover {
+  background: #028a93;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #eee;
+  font-size: 0.9rem;
+}
+
+.history-table th,
+.history-table td {
+  border: 1px solid #00adb5;
+  padding: 8px;
+  text-align: left;
+}
+
+.history-table th {
+  background-color: #222831;
+}
+
+.profile-info-row {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  width: 60vw;
+  margin-bottom: 40px;
+  border: var(--accent-color, #00adb5) 1px solid;
+  padding: 10px;
+}
+
+.profile-pic-holder {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #eee;
+  box-sizing: border-box;
+  background: rgba(0, 173, 181, 0.09);
+  border-radius: 16px;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #222831;
+}
+
+.default-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  background: #222831 url('https://ui-avatars.com/api/?name=User&background=222831&color=00adb5&size=120') center/cover no-repeat;
+}
+
+.profile-details h2 {
+  font-size: 1.7em;
+  font-weight: 600;
+  color: var(--accent-color, #00adb5);
+}
+
+.history-section {
+  width: 85vw;
+  border: 1px solid var(--accent-color, #00adb5);
+  margin-bottom: 25px;
+  max-height: 40vh;     /* Set your preferred scrollable height */
+  overflow-y: auto;
+  overflow-x: auto;
+  background: none;
+  scrollbar-width: thin;
+  scrollbar-color: #00adb5 #222831;
+}
+
+
+/* ----------------------------------------MOBILE----------------------------------------------- */
+
+@media (max-width: 425px){
+   .history-table th, .history-table td {
+    padding: 4px !important;
+   }
+}

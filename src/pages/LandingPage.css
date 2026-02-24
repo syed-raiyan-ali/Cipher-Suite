@@ -1,0 +1,13 @@
+.landing-page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  /* border: 1px solid var(--accent-color); */
+  /* background-color: #222831; */
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* horizontally center */
+  align-items: center;
+}

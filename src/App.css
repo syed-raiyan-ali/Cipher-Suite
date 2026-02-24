@@ -1,0 +1,14 @@
+[id^="tsparticles"] {
+  position: absolute !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  inset: 0 !important;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body, #root {
+  min-height: 100vh;
+  min-width: 100vw;
+  position: relative;
+}

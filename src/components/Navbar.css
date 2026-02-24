@@ -1,0 +1,247 @@
+.main-navbar{
+    border-bottom: 1px solid var(--accent-color);
+    display: flex;
+    align-items: center;
+    height: 8vh;
+    width: 100vw;
+    position: sticky;
+    top: 0;
+    font-size: clamp(12px, 1.5vw, 1.5vw);
+}
+
+.logo{
+    background-color: transparent;
+    /* width: 50%; */
+    height: 100%;
+    padding-left: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo:hover{
+    background-color: rgba(255, 255, 255, 0.096);
+    backdrop-filter: blur(8px) saturate(160%);
+    -webkit-backdrop-filter: blur(8px) saturate(160%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) inset, 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.logo-text{
+    font-size: clamp(20px, 2vw, 50px);
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.nav-btns{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btns button{
+    width: 31%;
+    height: 80%;
+    margin: 0 1% 0 1%;
+    border-style: none;
+    background-color: var(--content-bg);
+    color: var(--accent-color);
+    font-size: clamp(7px, 1.2vw, 1.5vw);
+}
+
+ .nav-btns .btn2{
+    margin: 0% !important;
+  }
+
+.nav-btns button:hover{
+    background-color: var(--accent-color);
+    color: var(--background-dark);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.profile-link{
+    /* width: 8%; */
+    width:clamp(10%, 200px, 200px);
+    height: 80%;
+    background-color: var(--content-bg);
+    color: var(--accent-color);
+    margin-right: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    /* padding: 0px 5px; */
+}
+
+.profile-link:hover{
+    background-color: var(--accent-color);
+    color: var(--background-dark);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.profile-link img {
+  box-shadow: 0 2px 8px rgba(0,173,181,0.08);
+  background: #222831;
+  transition: border 0.2s;
+  border: 2px solid transparent;
+}
+
+.profile-link:hover img {
+  border: 2px solid var(--background-dark);
+}
+
+.profile-link span {
+  color: var(--accent-color, #00adb5);
+}
+
+.profile-link:hover span {
+  color: var(--background-dark);
+}
+
+.profile-text{
+  padding-right: 5px;
+}
+
+/* ----------------------------------------MOBILE----------------------------------------------- */
+
+@media (max-width: 425px){
+  .logo{
+    width: 15%;
+    padding: 0%;
+  }
+
+  .logo-text{
+    display: none;
+  }
+
+  .nav-btns{
+    width: 60%;
+  }
+
+  .nav-btns button{
+    width: 32%;
+    font-size: clamp(9px, 1.2vw, 25px);
+  }
+
+  .profile-link{
+    width: 25%;
+  }
+
+  .profile-text{
+    font-Size: clamp(9px, 1.2vw, 25px);
+  }
+}
+
+/* ----------------------------------------TABLET----------------------------------------------- */
+
+@media (min-width: 426px) and (max-width: 768px){
+  .logo{
+    width: 40%;
+    padding: 0%;
+  }
+
+  .logo-text{
+    font-size: clamp(13px, 2.5vw, 50px);
+    font-weight: 700;
+  }
+
+  .nav-btns{
+    width: 50%;
+  }
+
+  .nav-btns button{
+    width: 32%;
+    font-size: clamp(11px, 2vw, 50px);
+    font-weight: 500;
+  }
+
+  .profile-link{
+    width: 20%;
+  }
+
+  .profile-text{
+    font-Size: clamp(11px, 2vw, 50px);
+    font-weight: 500;
+  }
+}
+
+/* ----------------------------------------LAPTOP----------------------------------------------- */
+
+@media (min-width: 769px) and (max-width: 1024px){
+  .logo{
+    width: 40%;
+    padding: 0%;
+  }
+
+  .logo-text{
+    font-size: clamp(20px, 2vw, 50px);
+    font-weight: 600;
+  }
+
+  .nav-btns{
+    width: 40%;
+  }
+
+  .nav-btns button{
+    width: 32%;
+    font-size: clamp(13px, 1.8vw, 50px);
+    font-weight: 500;
+  }
+
+  .profile-link{
+    width: 15%;
+  }
+
+  .profile-text{
+    font-Size: clamp(13px, 1.8vw, 50px);
+    font-weight: 500;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px){
+  .logo{
+    width: 45%;
+    padding: 0%;
+  }
+}
+
+@media (min-width: 1441px){
+  .logo{
+    width: 50%;
+    padding: 0%;
+  }
+
+  .logo-text{
+    font-size: clamp(20px, 2vw, 50px);
+    font-weight: 600;
+  }
+
+  .nav-btns{
+    width: 40%;
+  }
+
+  .nav-btns button{
+    width: 32%;
+    font-size: clamp(13px, 1.8vw, 50px);
+    font-weight: 500;
+  }
+
+  .profile-link{
+    width: 15%;
+  }
+
+  .profile-text{
+    font-Size: clamp(13px, 1.8vw, 50px);
+    font-weight: 500;
+  }
+
+  .profile-link img{
+    width: 45px !important;
+    height: 45px !important;
+  }
+}
