@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
 // import "./HistoryOfCipher.css";
 import "./HowItWorks.css";
 import { historyContent } from "./historyContent";
@@ -27,10 +28,10 @@ export default function HistoryOfCipher() {
         ))}
       </div>
 
-      <div className="cipher-content">
-        <pre style={{ whiteSpace: "pre-wrap" }}>
+      <div className="cipher-content markdown-body">
+        <ReactMarkdown>
           {historyContent[selectedCipher]}
-        </pre>
+        </ReactMarkdown>
       </div>
     </div>
   );

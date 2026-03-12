@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
 import "./HowItWorks.css";
 import { cipherContent } from "./howItWorksContent";
 
@@ -25,10 +26,10 @@ export default function HowItWorks() {
         ))}
       </div>
 
-      <div className="cipher-content">
-        <pre style={{ whiteSpace: "pre-wrap" }}>
+      <div className="cipher-content markdown-body">
+        <ReactMarkdown>
           {cipherContent[selectedCipher]}
-        </pre>
+        </ReactMarkdown>
       </div>
     </div>
   );

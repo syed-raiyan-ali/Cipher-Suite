@@ -1,0 +1,33 @@
+.fun-fact-tooltip {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: rgba(5, 10, 21, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(165, 180, 252, 0.2);
+  color: var(--col-slate-light);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  z-index: 50;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  animation: slideInFade 1s ease 2s forwards; /* Delay 2s then slide in */
+  pointer-events: none; /* Let clicks pass through to particles */
+}
+
+.fun-fact-tooltip strong {
+  color: var(--col-accent);
+}
+
+@keyframes slideInFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

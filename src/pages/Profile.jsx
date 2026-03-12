@@ -4,6 +4,7 @@ import { UserContext } from "../UserContext";
 import { auth } from "../firebase";
 import GoogleLogin from "../GoogleLogin";
 import { getCloudHistory, deleteOldHistory } from "../historyUtils";
+import { getUserHistory, clearUserHistory } from "../utils/localStorageUtils";
 
 export default function Profile() {
   const user = useContext(UserContext);
@@ -17,7 +18,7 @@ export default function Profile() {
         const { data, error } = await getCloudHistory(user, 30);
         setHistory(data || []);
       } else {
-        setHistory([]); // you can use getUserHistory() if you want local fallback
+        setHistory(getUserHistory() || []); 
       }
     }
     loadHistory();
@@ -29,6 +30,11 @@ export default function Profile() {
         await deleteOldHistory(user, 3650);
         setHistory([]);
       }
+    } else {
+      if (window.confirm("Clear all local cipher history?")) {
+        clearUserHistory();
+        setHistory([]);
+      }
     }
   };
 
@@ -37,7 +43,7 @@ export default function Profile() {
       <div className="profile-info-row">
         <div className="profile-pic-holder">
           {isLoggedIn && user.photoURL ? (
-            <img src={user.photoURL} alt="Profile" className="profile-pic" />
+            <img src={user.photoURL} alt="Profile" className="profile-pic" referrerPolicy="no-referrer" />
           ) : (
             <div className="profile-pic default-pic" />
           )}
@@ -66,6 +72,13 @@ export default function Profile() {
           </button>
         )}
       </div>
+
+      {!isLoggedIn && (
+        <div className="history-notice">
+          <p><strong>Heads up:</strong> You can only save up to 5 history entries locally while logged out.</p>
+          <p>Log in to save unlimited history and access it from any device!</p>
+        </div>
+      )}
 
       <div className="history-section">
         {history.length === 0 ? (

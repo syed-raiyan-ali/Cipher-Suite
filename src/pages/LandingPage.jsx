@@ -1,12 +1,22 @@
 import "./LandingPage.css";
-import Carousel from "../components/Carousel";
+import HowItWorks from "../components/HowItWorks";
+import HistoryOfCipher from "../components/HistoryOfCipher";
+import EncryptorTool from "../components/EncryptorTool";
 
-function LandingPage({ activeSlide }) {
-  // Using activeSlide prop from parent App component
-
+function LandingPage() {
   return (
-    <div className="landing-page">
-      <Carousel activeSlide={activeSlide} />
+    <div className="landing-page-scrollable">
+      <section id="encryptor" className="smooth-section">
+        <EncryptorTool />
+      </section>
+      
+      <section id="how-it-works" className="smooth-section">
+        <HowItWorks />
+      </section>
+      
+      <section id="history" className="smooth-section">
+        <HistoryOfCipher />
+      </section>
     </div>
   );
 }
