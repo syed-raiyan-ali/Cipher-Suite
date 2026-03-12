@@ -16,6 +16,33 @@
 - **Secure Cloud History:** Full Google Authentication integration allows users to sync their encryption history across multiple devices.
 - **History Limits Notice:** Smart context-aware alerts notify guests of local storage limits, encouraging secure cloud backup via login.
 
+---
+
+## 📸 Screenshots & Demo
+
+### 🔐 Encryption Tools in Action
+> Showcasing the live encryption flow across all three supported cipher tools — **Caesar**, **Vigenere**, and **ASCII** — in a single seamless demo.
+
+![Encryption Demo — Caesar, Vigenere & ASCII ciphers](public/encrypt-1.2.gif)
+
+---
+
+### 🌐 App Walkthrough — How It Works & History
+> A full scroll-through of the landing page, featuring the interactive **"How It Works"** section and the rich **"History of Ciphers"** educational content.
+
+![App Walkthrough — How It Works & History sections](public/cipher2.2.gif)
+
+---
+
+### 👤 User Profile — Guest vs. Authenticated
+
+| Not Logged In | Logged In |
+|:---:|:---:|
+| ![Guest profile — limited to 5 recent cipher history entries](public/profile-nlogged.jpg) | ![Authenticated profile — full cipher history synced to cloud](public/profile-logged.jpg) |
+| Guest users see only their **5 most recent** local cipher history entries with a prompt to sign in for cloud sync. | Authenticated users enjoy **unlimited history**, synced securely via **Supabase** and accessible across all devices. |
+
+---
+
 ## 🛠️ Tech Stack
 
 - **React 19:** Building block for the reactive UI components.
