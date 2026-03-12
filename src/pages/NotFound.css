@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+.notfound-container {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.notfound-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 540px;
+}
+
+/* ─── Glitch 404 ─── */
+.notfound-code {
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.glitch {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(6rem, 20vw, 10rem);
+  font-weight: 700;
+  color: var(--col-white);
+  position: relative;
+  display: inline-block;
+  letter-spacing: -4px;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  color: #a5b4fc;
+  animation: glitch-1 2.5s infinite linear;
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+  transform: translateX(-3px);
+}
+
+.glitch::after {
+  color: #00adb5;
+  animation: glitch-2 2.5s infinite linear;
+  clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+  transform: translateX(3px);
+}
+
+@keyframes glitch-1 {
+  0%, 90%, 100% { transform: translateX(-3px); opacity: 1; }
+  92% { transform: translateX(4px) skewX(-5deg); opacity: 0.8; }
+  94% { transform: translateX(-4px); opacity: 0.6; }
+  96% { transform: translateX(3px); opacity: 0.9; }
+}
+
+@keyframes glitch-2 {
+  0%, 90%, 100% { transform: translateX(3px); opacity: 1; }
+  92% { transform: translateX(-4px) skewX(5deg); opacity: 0.8; }
+  94% { transform: translateX(4px); opacity: 0.6; }
+  96% { transform: translateX(-3px); opacity: 0.9; }
+}
+
+/* ─── Divider ─── */
+.notfound-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--col-accent), transparent);
+  margin: 4px auto;
+}
+
+/* ─── Text ─── */
+.notfound-subtitle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  color: var(--col-accent);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.notfound-body {
+  font-size: 1rem;
+  color: var(--col-slate-light);
+  line-height: 1.7;
+  margin: 4px 0 12px;
+}
+
+/* ─── Button ─── */
+.notfound-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(165, 180, 252, 0.08);
+  border: 1px solid rgba(165, 180, 252, 0.3);
+  color: var(--col-accent);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95rem;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: 0.5px;
+  margin-top: 8px;
+}
+
+.notfound-btn:hover {
+  background: rgba(165, 180, 252, 0.15);
+  border-color: rgba(165, 180, 252, 0.6);
+  color: var(--col-white);
+  box-shadow: 0 0 20px rgba(165, 180, 252, 0.15);
+}
+
+.notfound-btn-prefix {
+  opacity: 0.5;
+}

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { Routes, Route } from "react-router-dom";
 import { auth } from "./firebase";
 import { UserContext } from "./UserContext";
 import LandingPage from "./pages/LandingPage.jsx";
 import Profile from "./pages/Profile.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import ParticleBackground from "./components/ParticleBackground.jsx";
 import Navbar from "./components/Navbar.jsx";
 import "./App.css";
@@ -23,10 +25,13 @@ function App() {
         {/* Fixed Navbar with Z-index so it sits above scrollable content */}
         <Navbar currentView={currentView} setCurrentView={setCurrentView} />
 
-        {/* Main Scrollable View Area */}
+        {/* Routed View Area */}
         <main className="view-transition-wrapper">
-          {currentView === "home" && <LandingPage />}
-          {currentView === "profile" && <Profile />}
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </main>
 
         {/* Footer */}
