@@ -1,4 +1,4 @@
-# 🪬 Cipher Suite: The Sophisticated Encryption Engine
+# Cipher Suite: The Sophisticated Encryption Engine
 
 [![Firebase Hosting](https://img.shields.io/badge/Hosted_on-Firebase-ffca28?logo=firebase&logoColor=white)](https://cipher-suite16.web.app/)
 
