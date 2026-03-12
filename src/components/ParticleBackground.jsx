@@ -22,21 +22,21 @@ export default function ParticleBackground() {
 
     const config = {
       particles: {
-        number: { value: 120, density: { enable: true, value_area: 800 } }, // Increased from 60 to 120
+        number: { value: 30, density: { enable: true, value_area: 800 } },
         color: { value: accent || "#00adb5" },
         shape: { type: "circle" },
-        opacity: { value: 0.8 },
-        size: { value: 7, random: true },
+        opacity: { value: 0.6 },
+        size: { value: 4, random: true },
         line_linked: {
           enable: true,
-          distance: 120, // slightly tighter links for thicker look
+          distance: 130,
           color: accent || "#00adb5",
-          opacity: 0.5,
-          width: 1.5
+          opacity: 0.4,
+          width: 1
         },
         move: {
           enable: true,
-          speed: 3,
+          speed: 1,
           direction: "none",
           random: false,
           straight: false,
@@ -46,21 +46,23 @@ export default function ParticleBackground() {
       interactivity: {
         detect_on: "canvas",
         events: {
-          onhover: { enable: true, mode: "repulse" },
-          onclick: { enable: true, mode: "push" },
+          onhover: { enable: false },
+          onclick: { enable: false },
           resize: true
-        },
-        modes: {
-          repulse: { distance: 120, duration: 0.4 },
-          push: { particles_nb: 4 }
         }
       },
-      retina_detect: true
+      retina_detect: false
     };
 
-    if (window.particlesJS) {
-      window.particlesJS("particles-js", config);
-    }
+    // Poll until particles.js CDN script is loaded (deferred)
+    const initParticles = () => {
+      if (window.particlesJS) {
+        window.particlesJS("particles-js", config);
+      } else {
+        setTimeout(initParticles, 100);
+      }
+    };
+    initParticles();
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
