@@ -23,6 +23,7 @@
 - **Tailwind CSS & PostCSS:** Utility-first styling combined with custom vanilla CSS modules for precise editorial control.
 - **Framer Motion & Micro-animations:** Powering the fluid transitions and interactive element states.
 - **Firebase:** Integrated for **Authentication** and **Hosting** the production deployment.
+- **Supabase:** PostgreSQL-backed cloud database used to store and retrieve user cipher history across devices.
 - **tsParticles:** Interactive canvas engine for sophisticated visual effects.
 
 ---
