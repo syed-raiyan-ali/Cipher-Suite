@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cipher-suite16.web.app/sitemap.xml

@@ -2,6 +2,7 @@ import './Navbar.css';
 import logo from '../assets/logo.svg';
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
+import { Helmet } from "react-helmet-async";
 
 function Navbar({ currentView, setCurrentView }) {
   const user = useContext(UserContext);
@@ -44,9 +45,28 @@ function Navbar({ currentView, setCurrentView }) {
     setActiveSection(sectionId);
   };
 
+  let pageTitle = "Cipher Suite";
+  if (currentView === "profile") {
+    pageTitle = "Cipher Suite | Profile";
+  } else if (currentView === "home") {
+    if (activeSection === "encryptor") pageTitle = "Cipher Suite | Encryptor";
+    if (activeSection === "how-it-works") pageTitle = "Cipher Suite | How It Works";
+    if (activeSection === "history") pageTitle = "Cipher Suite | History";
+  }
+
   return (
-    <nav className="main-navbar editorial-nav">
-      <div className="logo interactive" onClick={() => setCurrentView("home")}>
+    <nav className="main-navbar editorial-nav" aria-label="Main Navigation">
+      <Helmet>
+        <title>{pageTitle}</title>
+      </Helmet>
+      <div 
+        className="logo interactive" 
+        onClick={() => setCurrentView("home")}
+        role="button"
+        tabIndex="0"
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setCurrentView("home"); }}
+        aria-label="Navigate to Home"
+      >
         <img src={logo} alt="Cipher Suite Logo" className="logo-img" />
         <h1 className='logo-text'>
           Cipher Suite
@@ -68,7 +88,14 @@ function Navbar({ currentView, setCurrentView }) {
         >History</button>
       </div>
 
-      <div className="profile-link interactive" onClick={() => setCurrentView("profile")}>
+      <div 
+        className="profile-link interactive" 
+        onClick={() => setCurrentView("profile")}
+        role="button"
+        tabIndex="0"
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setCurrentView("profile"); }}
+        aria-label="View Profile"
+      >
         <span className='profile-text'>
           {displayName}
         </span>
