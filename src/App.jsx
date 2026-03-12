@@ -37,7 +37,7 @@ function App() {
         <footer className="app-footer" aria-label="Site footer">
           <a href="https://github.com/syed-raiyan-ali/Cipher-Suite" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">GitHub</a>
           <span aria-hidden="true"> · </span>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">Twitter</a>
+          <a href="https://www.linkedin.com/in/syed-raiyan-ali/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">LinkedIn</a>
         </footer>
       </div>
     </UserContext.Provider>
