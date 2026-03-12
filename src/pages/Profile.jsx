@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 import { UserContext } from "../UserContext";
 import { auth } from "../firebase";
@@ -8,6 +9,7 @@ import { getUserHistory, clearUserHistory } from "../utils/localStorageUtils";
 
 export default function Profile() {
   const user = useContext(UserContext);
+  const navigate = useNavigate();
   const [history, setHistory] = useState([]);
   const isLoggedIn = !!user && !!user.uid;
 
@@ -62,9 +64,10 @@ export default function Profile() {
         ) : (
           <button
             className="profile-logout-btn"
-            onClick={() => {
+            onClick={async () => {
               if (window.confirm("Are you sure you want to logout?")) {
-                auth.signOut();
+                await auth.signOut();
+                navigate("/");
               }
             }}
           >

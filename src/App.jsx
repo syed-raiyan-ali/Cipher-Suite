@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Routes, Route } from "react-router-dom";
 import { auth } from "./firebase";
@@ -11,8 +11,7 @@ import Navbar from "./components/Navbar.jsx";
 import "./App.css";
 
 function App() {
-  const [currentView, setCurrentView] = useState("home");
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   return (
     <UserContext.Provider value={user}>
@@ -22,8 +21,8 @@ function App() {
         {/* Screen-reader only H1 for accessibility & SEO */}
         <h1 className="sr-only">Cipher Suite: The Sophisticated Encryption Engine</h1>
 
-        {/* Fixed Navbar with Z-index so it sits above scrollable content */}
-        <Navbar currentView={currentView} setCurrentView={setCurrentView} />
+        {/* Navbar — uses useLocation internally, no props needed */}
+        <Navbar />
 
         {/* Routed View Area */}
         <main className="view-transition-wrapper">
