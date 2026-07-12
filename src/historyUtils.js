@@ -1,9 +1,21 @@
-import { supabase } from './supabaseClient';
+// historyUtils.js
+import { db } from './firebaseClient'; // Import the db we exported above
+import { 
+  collection, 
+  addDoc, 
+  getDocs, 
+  query, 
+  where, 
+  orderBy, 
+  deleteDoc, 
+  doc 
+} from 'firebase/firestore';
 
 export async function addCloudHistory(entry, user) {
-  const { data, error } = await supabase
-    .from('history')
-    .insert([{
+  try {
+    const historyCollection = collection(db, 'history');
+    
+    const docRef = await addDoc(historyCollection, {
       user_id: user.uid,
       email: user.email,
       cipher: entry.cipher,
@@ -11,41 +23,65 @@ export async function addCloudHistory(entry, user) {
       input: entry.input,
       key: entry.key,
       output: entry.output,
-      timestamp: entry.timestamp,
+      timestamp: entry.timestamp || new Date().toISOString(),
       ip: entry.ip || null
-    }])
-    .select();
-  if (error) {
-    console.error("Supabase history insert error:", error);
+    });
+
+    console.log("Firestore history insert success, ID:", docRef.id);
+    return { id: docRef.id };
+  } catch (error) {
+    console.error("Firestore history insert error:", error);
     return undefined;
-  } else {
-    console.log("Supabase history insert result:", data);
-    return data; // <-- just add this line
   }
 }
 
 export async function getCloudHistory(user, days = 30) {
-  const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
-  const { data, error } = await supabase
-    .from('history')
-    .select('*')
-    .eq('user_id', user.uid)
-    .gt('timestamp', cutoff)
-    .order('timestamp', { ascending: false });
-  if (error) {
-    console.error("Supabase get history error:", error);
+  try {
+    const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
+    const historyCollection = collection(db, 'history');
+    
+    const q = query(
+      historyCollection,
+      where('user_id', '==', user.uid),
+      where('timestamp', '>', cutoff),
+      orderBy('timestamp', 'desc')
+    );
+
+    const querySnapshot = await getDocs(q);
+    
+    // Maps Firestore documents out into a clean flat array of data objects for your UI table
+    const data = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+
+    return { data, error: null };
+  } catch (error) {
+    console.error("Firestore get history error:", error);
+    return { data: [], error };
   }
-  return { data, error };
 }
 
 export async function deleteOldHistory(user, days = 30) {
-  const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
-  const { data, error } = await supabase
-    .from('history')
-    .delete()
-    .eq('user_id', user.uid)
-    .lt('timestamp', cutoff);
-  if (error) {
-    console.error("Supabase delete history error:", error);
+  try {
+    const cutoff = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString();
+    const historyCollection = collection(db, 'history');
+    
+    const q = query(
+      historyCollection,
+      where('user_id', '==', user.uid),
+      where('timestamp', '<', cutoff)
+    );
+
+    const querySnapshot = await getDocs(q);
+    
+    const deletePromises = querySnapshot.docs.map(document => 
+      deleteDoc(doc(db, 'history', document.id))
+    );
+    
+    await Promise.all(deletePromises);
+    console.log(`Successfully cleaned up old history entries.`);
+  } catch (error) {
+    console.error("Firestore delete history error:", error);
   }
 }
